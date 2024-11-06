@@ -7,21 +7,24 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- <link rel="stylesheet" href=""> -->
+        
     </head>
     <body>
         <form action="#" method="post">
             <input type="text" placeholder="Ej: Juan Rodriguez" name="nombre">
-            <button>Accept</button>
+            <input type="password" placeholder="123Ertydf" name="pass">
+            <button type="submit">Accept</button>
+            <button type="submit">Consultar</button>
 
         </form>
         
         <?php
-            if(isset($_POST["nombre"])){
+            if(isset($_POST["nombre"]) && isset($_POST["pass"])){
                 $name = $_POST["nombre"];
+                $pass = $_POST["pass"];
                 echo  $name;
             }
         ?>
-        <!-- <script src="" async defer></script> -->
+        
     </body>
 </html>

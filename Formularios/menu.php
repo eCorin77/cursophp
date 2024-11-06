@@ -9,14 +9,14 @@ $gustos_empanadas = [
     'Verdura' => 180
 ];
 
-$pedido = [         // gusto y cantidad pedida
-    'Carne' => 0,
-    'Pollo' => 0,
-    'Jamón y queso' => 0,
-    'Humita' => 0,
-    'Roquefort' => 0,
-    'Verdura' => 0
-];
+// Inicializar el pedido con cantidad y precio
+$pedido = [];
+foreach ($gustos_empanadas as $gusto => $precio) {
+    $pedido[$gusto] = [
+        'cantidad' => 0,
+        'precio' => $precio
+    ];
+}
 
 // Procesar el formulario cuando se envía
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -24,14 +24,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Obtener la cantidad de empanadas seleccionadas
         $cantidad = isset($_POST[$gusto]) ? (int)$_POST[$gusto] : 0;
         // Actualizar el pedido
-        $pedido[$gusto] += $cantidad;
+        $pedido[$gusto]['cantidad'] += $cantidad;
     }
 }
 
-$total_empanadas = array_sum($pedido);
-$total_precio = array_sum(array_map(function($gusto) use ($pedido, $gustos_empanadas) {
-    return $pedido[$gusto] * $gustos_empanadas[$gusto];
-}, array_keys($gustos_empanadas)));
+$total_empanadas = array_sum(array_column($pedido, 'cantidad'));
+$total_precio = array_sum(array_map(function($item) {
+    return $item['cantidad'] * $item['precio'];
+}, $pedido));
 ?>
 
 <!DOCTYPE html>
@@ -40,61 +40,8 @@ $total_precio = array_sum(array_map(function($gusto) use ($pedido, $gustos_empan
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Empanadas</title>
-    <style>
-        * {
-            font-family: 'Roboto', sans-serif;
-            box-sizing: border-box;
-        }
-        .row {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            width: 500px;
-            background-color: #c4c4ff;
-            font-size: large;
-        }
-        input[type="number"] {
-            width: 60px;
-            border: none;
-            background-color: transparent;
-            font-size: large;
-            font-weight: 700;
-            text-align: end;
-            padding-right: 5px;
-        }
-        .gusto {
-            flex: 1;
-            padding: 5px;
-        }
-        .precio {
-            padding-right: 50px;
-        }
-        .flexEnd {
-            justify-content: flex-end;
-        }
-        .subtotal, .total {
-            text-align: right;
-            width: 70px;
-            padding: 5px;
-        }
-        .total-row {
-            display: flex;
-            margin-top: 20px;
-            width: 500px;
-            font-size: x-large;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: gray;
-            color: white;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        button.active {
-            background-color: green;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
     <script>
         function calcularSubtotal(precio, cantidadInput, subtotalSpan) {
             const cantidad = cantidadInput;
@@ -141,10 +88,11 @@ $total_precio = array_sum(array_map(function($gusto) use ($pedido, $gustos_empan
         <div class="precio"><?php echo "$ {$precio}"; ?></div>
         <span>Cant</span>
         <div class="flexEnd">
-            <input type="number" name="<?php echo $gusto; ?>" min="0" max="999" value="<?php echo $pedido[$gusto]; ?>" 
+            <input type="number" name="<?php echo $gusto; ?>" min="0" max="999" value="<?php echo $pedido[$gusto]['cantidad']; ?>" 
                 onchange="calcularSubtotal(<?php echo $precio; ?>, this.value, document.getElementById('subtotal-<?php echo $gusto; ?>'))">
+            <input type="hidden" name="<?php echo $gusto; ?>_precio" value="<?php echo $precio; ?>">
         </div>
-        <div class="subtotal flexEnd" id="subtotal-<?php echo $gusto; ?>"><?php echo $pedido[$gusto] * $precio; ?></div>
+        <div class="subtotal flexEnd" id="subtotal-<?php echo $gusto; ?>"><?php echo $pedido[$gusto]['cantidad'] * $precio; ?></div>
     </div>
     <?php endforeach; ?>
 
@@ -152,8 +100,9 @@ $total_precio = array_sum(array_map(function($gusto) use ($pedido, $gustos_empan
         <strong>Total: $<span id="total"><?php echo $total_precio; ?></span></strong>
     </div>
 
-    <button type="submit" id="botonCompra" class="active">Proceder con la compra</button>
-    </form>
+    <button type="submit" id="botonCompra">Proceder con la compra</button>
+</form>
+
 
 </body>
 </html>

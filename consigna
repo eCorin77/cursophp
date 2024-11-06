@@ -1,0 +1,15 @@
+Restaurant web
+
+1 - página principal registro de usuario- validación
+2 - conexión base de datos.
+3 - cierre conexión base de datos.
+4 - página de menú
+5 - página de consultas - restaurante.
+
+base de datos de clientes con nombre, correo, contraseña, id
+el cliente puede registrarse o loguearse
+cuando el cliente se loguea puede hacer el pedido
+base de datos de trabajadores con usuario y contraseña
+el trabajador que se logea puede consultar la base de datos de clientes
+
+tener archivos separados para conectar, desconectar, insertar

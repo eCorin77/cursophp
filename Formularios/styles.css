@@ -124,3 +124,54 @@ body {
     border-style: solid;
     border-color:  transparent red transparent transparent ; /* Color de la flecha hacia la izquierda */
 }
+
+/*MENU*/
+.row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 500px;
+    background-color: #c4c4ff;
+    font-size: large;
+}
+input[type="number"] {
+    width: 60px;
+    border: none;
+    background-color: transparent;
+    font-size: large;
+    font-weight: 700;
+    text-align: end;
+    padding-right: 5px;
+}
+.gusto {
+    flex: 1;
+    padding: 5px;
+}
+.precio {
+    padding-right: 50px;
+}
+.flexEnd {
+    justify-content: flex-end;
+}
+.subtotal, .total {
+    text-align: right;
+    width: 70px;
+    padding: 5px;
+}
+.total-row {
+    display: flex;
+    margin-top: 20px;
+    width: 500px;
+    font-size: x-large;
+}
+button {
+    padding: 10px 20px;
+    background-color: gray;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+button.active {
+    background-color: green;
+}

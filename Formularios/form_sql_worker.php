@@ -3,7 +3,7 @@
 $servidor = "localhost";
 $usuario = "root";
 $clave = "";
-$baseDeDatos = "prueba";
+$baseDeDatos = "trabajadores";
 
 $enlace = mysqli_connect($servidor, $usuario, $clave, $baseDeDatos)
 
@@ -20,40 +20,27 @@ $enlace = mysqli_connect($servidor, $usuario, $clave, $baseDeDatos)
     <body>
         <form action="#" name="prueba" method="post">
             <input type="text" name="nombre" placeholder="nombre">
-            <input type="text" name="correo" placeholder="correo">
-            <select type="text" name="gen" placeholder="genero">
-                <option value="varon">Varón</option>
-                <option value="mujer">Mujer</option>
-                <option value="nn">Prefiero no decirlo</option>
-            </select>
-
+            <input type="text" name="password" placeholder="password">
+            
             <input type="submit" name="registro">
             <input type="reset">
-
         </form>
 
-
-       
-        
-        <!-- <script src="" async defer></script> -->
     </body>
 </html>
 
 <?php
     if(isset($_POST["registro"])){
         $nombre = $_POST["nombre"];
-        $correo = $_POST["correo"];
-        $gen = $_POST["gen"];
+        $password = $_POST["password"];
 
-        //$insertarDatos = "INSERT INTO datos VALUES('$nombre','$correo','$gen','')";
-        //tambien puede ser
-        $insertarDatos = "INSERT INTO `datos`(`nombre`, `mail`, `gen`, `id`) VALUES ('$nombre','$correo','$gen','')";
+        $insertarDatos = "INSERT INTO `datos`(`nombre`, `mail`) VALUES ('$nombre','$password')";
         $ejecutarInsertar = mysqli_query($enlace, $insertarDatos);
         
         if($ejecutarInsertar){
             echo "<br>";
             echo "Se registró usuario: {$nombre} <br>";
-            echo  "Correo electronico: {$correo} <br>";
+            echo  "password electronico: {$password} <br>";
         }else{
             echo "<br>";
             echo "Error al Conectar";

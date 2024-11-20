@@ -1,0 +1,177 @@
+
+*{
+    box-sizing: border-box;
+    
+}
+.input-container {
+    position: relative; /* Necesario para posicionar el tooltip */
+    display: flex;      /* Usar flexbox */
+    align-items: center; /* Alinear verticalmente al centro */
+    margin-bottom: 10px; /* Espacio entre elementos */
+}
+
+.input-container label {
+    margin-right: 10px; /* Espacio entre el label y el input */
+    flex: 0 0 auto; /* Evitar que el label crezca */
+    white-space: nowrap; 
+}
+
+
+.input-container label, 
+.input-container input {
+    display: inline-block;    /* Mostrar ambos elementos en línea */
+    vertical-align: middle;   /* Alinear verticalmente al centro */
+}
+
+
+input[type="password"] {
+    margin-bottom: 10px;     /* Espacio entre elementos */
+    padding: 10px;           /* Espaciado interno */
+    width: 100%;             /* Tomar todo el ancho */
+    max-width: 300px;        /* Ancho máximo */
+    display: inline;
+    height: 30px;
+}
+
+input[type="submit"] {
+    content: "SUBMIT";
+    cursor: pointer;          /* Cambiar el cursor al pasar por encima */
+    padding: 10px 20px;      /* Espaciado interno */
+    border: none;            /* Sin borde */
+    background-color: #4CAF50; /* Color de fondo */
+    color: white;            /* Color del texto */
+    border-radius: 5px;      /* Bordes redondeados */
+    transition: background-color 0.3s; /* Transición suave para el color de fondo */
+}
+
+input[type="submit"]:hover {
+    background-color: #256b28; /* Color de fondo al pasar el mouse */
+}
+form{
+    margin: auto;
+}
+li{
+    color: aliceblue;
+    text-align: left;
+}
+strong{
+    font-size: larger;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;  /* Disposición vertical de los elementos */
+    align-items: center;      /* Centrar elementos dentro del formulario */
+    padding: 20px;
+    border-radius: 10px;     /* Bordes redondeados */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+    background-color: rgb(213, 228, 78);
+    width: fit-content;
+}
+.boton{
+    padding: 0px; 
+    background-color: rgb(0, 0, 0) !important;
+    border: none;
+    border-radius: 5px;
+    color: aliceblue !important;
+    padding: 8px;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0; /* Elimina el margen por defecto */
+    padding: 20px; /* Agrega un poco de espacio */
+}
+
+.success, .error {
+    width: fit-content;
+    font-weight: bold;
+    padding: 20px ;
+    margin: 100px auto;
+    justify-content: center;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.success{
+    background-color: rgb(187, 255, 0);
+}
+
+.error{
+    background-color: rgb(255, 39, 39);
+}
+.tooltip {
+    display: none; /* Oculto por defecto */
+    position: absolute;
+    background-color: red;
+    color: white;
+    left: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    margin-left: 10px; /* Espacio entre el input y el tooltip */
+    font-size: 12px;
+    z-index: 10; /* Asegura que esté por encima de otros elementos */
+    white-space: nowrap; 
+    top: 25%;
+}
+
+.tooltip::before {
+    content: ''; /* Crear el contenido vacío para el triángulo */
+    position: absolute;
+    top: 50%; /* Centrar verticalmente */
+    right: 100%; /* Posicionar a la derecha */
+    margin-top: -7px; /* Ajustar para centrar verticalmente */
+    border-width: 7px; /* Tamaño de la flecha */
+    border-style: solid;
+    border-color:  transparent red transparent transparent ; /* Color de la flecha hacia la izquierda */
+}
+
+/*MENU*/
+.row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 500px;
+    background-color: #c4c4ff;
+    font-size: large;
+}
+input[type="number"] {
+    width: 60px;
+    border: none;
+    background-color: transparent;
+    font-size: large;
+    font-weight: 700;
+    text-align: end;
+    padding-right: 5px;
+}
+.gusto {
+    flex: 1;
+    padding: 5px;
+}
+.precio {
+    padding-right: 50px;
+}
+.flexEnd {
+    justify-content: flex-end;
+}
+.subtotal, .total {
+    text-align: right;
+    width: 70px;
+    padding: 5px;
+}
+.total-row {
+    display: flex;
+    margin-top: 20px;
+    width: 500px;
+    font-size: x-large;
+}
+button {
+    padding: 10px 20px;
+    background-color: gray;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+button.active {
+    background-color: green;
+}

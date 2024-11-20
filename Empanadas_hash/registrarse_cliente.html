@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>  
+<head>
+    <meta charset="UTF-8">
+    <title>LogIn</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+    <form method="post" action="welcome_reg_hash.php" onsubmit="return validateForm()" class="form">
+        <div class="input-container">
+            <label for="name">Nombre</label>
+            <input type="text" id="name" name="name" placeholder="Ej: Juan Rodriguez">
+            <div class="tooltip" id="nameTooltip">El campo NOMBRE es obligatorio</div>
+        </div>
+        <div class="input-container">
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" placeholder="Ej: juanr@gmail.com">
+            <div class="tooltip" id="emailTooltip">El campo EMAIL es obligatorio</div>
+        </div>
+        <div class="input-container">
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" name="password" min="8" max="16">
+            <div class="tooltip" id="passwordTooltip">El campo CONTRASEÑA es obligatorio</div>
+        </div>
+        <input type="submit" name="enviar" value="ENVIAR">
+    </form>
+
+    <script>
+        function validateField(inputId, tooltipId) {
+            var input = document.getElementById(inputId);
+            var tooltip = document.getElementById(tooltipId);
+            
+            // Reset tooltip
+            tooltip.style.display = "none";
+            input.style.border = ""; // Reiniciar estilo del borde
+
+            if (input.value.trim() === "") {
+                tooltip.style.display = "block"; // Mostrar tooltip
+                input.style.border = "2px solid red"; // Bordes rojos para el input
+                return false; // Campo inválido
+            }
+            return true; // Campo válido
+        }
+
+        function validateForm() {
+            var isValid = true;
+            isValid = isValid && validateField("name", "nameTooltip");
+            isValid = isValid && validateField("email", "emailTooltip");
+            isValid = isValid && validateField("password", "passwordTooltip");
+
+            return isValid; // Permitir el envío del formulario si todos son válidos
+        }
+            // Añadir evento de input a cada campo
+            document.getElementById("name").addEventListener("input", function() {
+            document.getElementById("nameTooltip").style.display = "none";
+        });
+        document.getElementById("email").addEventListener("input", function() {
+            document.getElementById("emailTooltip").style.display = "none";
+        });
+        document.getElementById("password").addEventListener("input", function() {
+            document.getElementById("passwordTooltip").style.display = "none";
+        });
+    </script>
+
+</body>
+</html>

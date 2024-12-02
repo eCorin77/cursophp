@@ -2,7 +2,7 @@
 
 $servidor = "localhost";
 $usuario = "root";
-$clave = "usuario";
+$clave = "";
 function conectardb($db){
     global $servidor, $usuario, $clave;
     

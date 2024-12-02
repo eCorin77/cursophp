@@ -43,7 +43,7 @@ if (validateUser($user, $password_ingresado)) {
     echo '<a href="menu.php"><button>Ir al menu</button></a>';
 } else {
     echo "<h1>Usuario o contraseña incorrectos</h1>";
-    echo '<a href="log_in_cliente.html"><button>Volver</button></a>';
+    echo '<a href="lindex.html"><button>Volver</button></a>';
 }
 
 // Desconectar de la base de datos

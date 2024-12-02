@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2024 at 07:49 PM
+-- Generation Time: Dec 02, 2024 at 07:24 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -40,7 +40,10 @@ CREATE TABLE `clientes_hash` (
 
 INSERT INTO `clientes_hash` (`id`, `nombre`, `correo`, `password`) VALUES
 (1, 'Pepe', 'pepe@gmail.com', '$2y$10$oN1f866Gjihy7mlVxEWl2.BPMXg4YX4kQfc4/aNZ6ScvKKo8PHvOK'),
-(2, 'Emilio', 'emi@gmail.com', '$2y$10$/47PqqRU65MulA2JIoZnIOcUoRwIvjMJsERR1iDZiYF6MDp5JUqcW');
+(2, 'Emilio', 'emi@gmail.com', '$2y$10$/47PqqRU65MulA2JIoZnIOcUoRwIvjMJsERR1iDZiYF6MDp5JUqcW'),
+(3, 'Maria', 'mari@hotmail.com', '$2y$10$SQT7mLpIBHbw.BP.4YJbH.gvyllk02KUOYM/CJGMhaG6cC.2r89Bi'),
+(4, 'Santiago', 'santi@yahoo.com', '$2y$10$.xcGhEk/v0Im5qyXTWsw5OL.N6fyEsBtqFvSKeIioQEroEhRvYGyG'),
+(5, 'Ana', 'anita@gmail.com', '$2y$10$SfmeyHHZqhV2STJBMrnFDOmPq7uwvZqBLPcN1Zw6oLTd6aj.SvUcm');
 
 --
 -- Indexes for dumped tables
@@ -60,7 +63,7 @@ ALTER TABLE `clientes_hash`
 -- AUTO_INCREMENT for table `clientes_hash`
 --
 ALTER TABLE `clientes_hash`
-  MODIFY `id` int(13) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(13) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

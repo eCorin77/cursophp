@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        .divi{
+            background-color: blueviolet;
+            aspect-ratio: 16 / 9; /* Mantiene automáticamente la proporción 16:9 */
+            width: 100%; /* Ancho flexible basado en el contenedor */
+            max-width: 100%; /* Opcional, para limitar el ancho al contenedor */
+            height: 100%; /* Se ajusta automáticamente según la proporción */
+            overflow: hidden;
+        }
+        .player{
+            background-color: rgb(226, 43, 43);
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <body>
+        <div class="divi">
+            <div id="player" class="player"></div> <!-- Aquí se mostrará el reproductor -->
+        </div>
+        
+    
+<script>
+    // 1. Cargar el script de la API de YouTube
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  
+    // 2. Crear una función que se llama automáticamente cuando se carga la API
+    var player;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+       // height: '360', // Altura del reproductor
+      //  width: '640',  // Ancho del reproductor
+        videoId: 'D3YgNKJVm34', // ID del vídeo de YouTube
+        playerVars: {
+            'loop': 1,                   // Habilita el bucle infinito
+            'playlist': 'D3YgNKJVm34',   // Especifica el mismo ID para que el bucle funcione
+            'autoplay': 1,               // Reproduce automáticamente (opcional)
+            'rel': 0,                     // No mostrar vídeos relacionados
+            'cc_load_policy': 0,         // Desactiva los subtítulos
+            'modestbranding': 1          // Elimina la marca de YouTube (opcional)
+            },
+        events: {
+          'onReady': onPlayerReady, // Evento al estar listo
+          'onStateChange': onPlayerStateChange // Evento al cambiar de estado
+        }
+      });
+    }
+  
+    // 3. Función que se ejecuta cuando el reproductor está listo
+    function onPlayerReady(event) {
+      event.target.playVideo(); // Reproduce el vídeo automáticamente (opcional)
+    }
+  
+    // 4. Detectar cambios en el estado del reproductor
+    function onPlayerStateChange(event) {
+      if (event.data == YT.PlayerState.ENDED) {
+        
+      }
+    }
+  
+  </script>
+    </body>
+</html>
